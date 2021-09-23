@@ -3,7 +3,6 @@
   description: Rewrites all Terraform configuration files to a canonical format.
   entry: terraform_fmt.sh
   language: script
-  files: (\.tf|\.tfvars)$
   exclude: \.terraform\/.*$
 
 - id: terraform_docs
@@ -12,7 +11,6 @@
   require_serial: true
   entry: terraform_docs.sh
   language: script
-  files: (\.tf|\.terraform\.lock\.hcl)$
   exclude: \.terraform\/.*$
 
 - id: terraform_docs_without_aggregate_type_defaults
@@ -47,7 +45,6 @@
   description: Validates all Terraform configuration files with TFLint.
   entry: terraform_tflint.sh
   language: script
-  files: (\.tf|\.tfvars)$
   exclude: \.terraform\/.*$
 
 - id: terragrunt_fmt

@@ -20,15 +20,15 @@ done
 
 for path_uniq in $(echo "${paths[*]}" | tr ' ' '\n' | sort -u); do
   path_uniq="${path_uniq//__REPLACED__SPACE__/ }"
-
+  echo "$path_uniq"
   pushd "$path_uniq" > /dev/null
   terraform fmt
   popd > /dev/null
 done
 
-# terraform.tfvars are excluded by `terraform fmt`
-for tfvars_file in "${tfvars_files[@]}"; do
-  tfvars_file="${tfvars_file//__REPLACED__SPACE__/ }"
+# # terraform.tfvars are excluded by `terraform fmt`
+# for tfvars_file in "${tfvars_files[@]}"; do
+#   tfvars_file="${tfvars_file//__REPLACED__SPACE__/ }"
 
-  terraform fmt "$tfvars_file"
-done
+#   terraform fmt "$tfvars_file"
+# done

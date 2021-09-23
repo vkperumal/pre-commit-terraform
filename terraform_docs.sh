@@ -21,7 +21,9 @@ done
 for path_uniq in $(echo "${paths[*]}" | tr ' ' '\n' | sort -u); do
   path_uniq="${path_uniq//__REPLACED__SPACE__/ }"
   echo "$path_uniq"
-  terraform-docs markdown table --output-file README.md --output-mode inject $path_uniq
+  if [[ "$path_uniq" != "." ]]; then
+    terraform-docs markdown table --output-file README.md --output-mode inject $path_uniq
+  fi
 done
 
 # # terraform.tfvars are excluded by `terraform fmt`

@@ -21,6 +21,7 @@ terrascan_() {
 
   for path_uniq in $(echo "${paths[*]}" | tr ' ' '\n' | sort -u); do
     path_uniq="${path_uniq//__REPLACED__SPACE__/ }"
+    echo "$path_uniq"
     pushd "$path_uniq" > /dev/null
     terrascan scan -i terraform $ARGS
     popd > /dev/null

@@ -53,9 +53,9 @@ tflint_() {
   local index=0
   for file_with_path in "${FILES[@]}"; do
     # file_with_path="${file_with_path// /__REPLACED__SPACE__}"
-    file_with_path=`find $file_with_path -type d -maxdepth 1 | grep -i $file_with_path/`
+    file_with_path=$(find $file_with_path -type d -maxdepth 1 | grep -i $file_with_path/)
 
-    paths[index]=$(dirname "$file_with_path")
+    paths[index]=$file_with_path
 
     ((index += 1))
   done
